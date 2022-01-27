@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "429241077025",
+    "firebase_url": "https://pj400-3ef6f-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "pj400-3ef6f",
+    "storage_bucket": "pj400-3ef6f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:429241077025:android:727675d12e6bc501224260",
+        "android_client_info": {
+          "package_name": "edu.zahra.myapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "429241077025-4eusg0ua8d4nbqc8ptjap88v7jfi70a8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA51gEcUXKvugRyY6-sDuGbQeWOvb4Qdeg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "429241077025-4eusg0ua8d4nbqc8ptjap88v7jfi70a8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
