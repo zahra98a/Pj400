@@ -6,6 +6,35 @@
     android:layout_height="match_parent"
     tools:context=".VendorSignupActivity">
 
+    <TextView
+        android:id="@+id/tvAlreadyRegistered"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="152dp"
+        android:clickable="true"
+        android:onClick="goLogin"
+        android:text="Already have an account!"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.897"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnVendorRegister"
+        app:layout_constraintVertical_bias="0.321"
+        tools:ignore="MissingConstraints" />
+
+    <EditText
+        android:id="@+id/etVendorConfirmPassword"
+        android:layout_width="361dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:hint="Confirm Password"
+        android:imeOptions="actionDone"
+        android:inputType="textPassword"
+        android:selectAllOnFocus="true"
+        app:layout_constraintEnd_toEndOf="@+id/etVendorPassword"
+        app:layout_constraintStart_toStartOf="@+id/etVendorPassword"
+        app:layout_constraintTop_toBottomOf="@+id/etVendorPassword" />
+
     <EditText
         android:id="@+id/etUserName"
         android:layout_width="361dp"
@@ -13,49 +42,46 @@
         android:layout_marginTop="188dp"
         android:hint="User name"
         android:selectAllOnFocus="true"
-        app:layout_constraintEnd_toEndOf="@+id/etEmail"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/etEmail"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="24dp" />
 
     <EditText
-        android:id="@+id/etEmail"
+        android:id="@+id/etVendorEmail"
         android:layout_width="361dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:hint="Email"
         android:inputType="textEmailAddress"
         android:selectAllOnFocus="true"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/etUserName"
+        app:layout_constraintStart_toStartOf="@+id/etUserName"
         app:layout_constraintTop_toBottomOf="@+id/etUserName" />
 
     <Button
-        android:id="@+id/btnRegister"
+        android:id="@+id/btnVendorRegister"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="40dp"
         android:background="@drawable/roundbtn"
         android:onClick="goLogin"
         android:text="Register"
-        app:layout_constraintEnd_toEndOf="@+id/etPassword"
-        app:layout_constraintHorizontal_bias="0.501"
-        app:layout_constraintStart_toStartOf="@+id/etPassword"
-        app:layout_constraintTop_toBottomOf="@+id/etPassword"
+        app:layout_constraintEnd_toEndOf="@+id/etVendorConfirmPassword"
+        app:layout_constraintStart_toStartOf="@+id/etVendorConfirmPassword"
+        app:layout_constraintTop_toBottomOf="@+id/etVendorConfirmPassword"
         tools:ignore="MissingConstraints" />
 
     <EditText
-        android:id="@+id/etPassword"
+        android:id="@+id/etVendorPassword"
         android:layout_width="361dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
         android:hint="Password"
         android:imeOptions="actionDone"
         android:inputType="textPassword"
         android:selectAllOnFocus="true"
-        app:layout_constraintEnd_toEndOf="@+id/etUserName"
+        app:layout_constraintEnd_toEndOf="@+id/etVendorEmail"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/etUserName"
-        app:layout_constraintTop_toBottomOf="@+id/etEmail" />
+        app:layout_constraintStart_toStartOf="@+id/etVendorEmail"
+        app:layout_constraintTop_toBottomOf="@+id/etVendorEmail" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -14,14 +14,14 @@
         android:layout_marginTop="24dp"
         android:hint="Password"
         app:hintEnabled="true"
-        app:layout_constraintEnd_toEndOf="@+id/etUserName"
-        app:layout_constraintStart_toStartOf="@+id/etUserName"
-        app:layout_constraintTop_toBottomOf="@+id/etUserName"
+        app:layout_constraintEnd_toEndOf="@+id/etVendorEmail"
+        app:layout_constraintStart_toStartOf="@+id/etVendorEmail"
+        app:layout_constraintTop_toBottomOf="@+id/etVendorEmail"
         app:passwordToggleEnabled="true"
         tools:ignore="MissingConstraints">
 
         <EditText
-            android:id="@+id/etPlayerPassword"
+            android:id="@+id/etVendorPassword"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="16dp"
@@ -33,7 +33,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <EditText
-        android:id="@+id/etUserName"
+        android:id="@+id/etVendorEmail"
         android:layout_width="361dp"
         android:layout_height="48dp"
         android:layout_marginTop="208dp"
@@ -46,7 +46,7 @@
         tools:ignore="MissingConstraints" />
 
     <Button
-        android:id="@+id/btnLogin"
+        android:id="@+id/btnVendorLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="56dp"
@@ -62,7 +62,7 @@
         tools:ignore="MissingConstraints" />
 
     <TextView
-        android:id="@+id/tvRegester"
+        android:id="@+id/tvVendorRegester"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:clickable="true"
@@ -73,7 +73,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.772"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnLogin"
+        app:layout_constraintTop_toBottomOf="@+id/btnVendorLogin"
         app:layout_constraintVertical_bias="0.032" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

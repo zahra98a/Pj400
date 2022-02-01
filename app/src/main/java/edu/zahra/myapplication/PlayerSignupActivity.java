@@ -89,7 +89,7 @@ public class PlayerSignupActivity extends AppCompatActivity {
        }
     }
     public void goToNextActivity() {
-        Intent intent = new Intent(this, PlaygroundListActivity.class);
+        Intent intent = new Intent(this, PlayerLoginActivity.class);
         startActivity(intent);
     }
     // if already registered go to sign in
