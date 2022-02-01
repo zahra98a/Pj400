@@ -21,7 +21,7 @@
         tools:ignore="MissingConstraints">
 
         <EditText
-            android:id="@+id/etPassword"
+            android:id="@+id/etPlayerPassword"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="16dp"
@@ -49,15 +49,17 @@
         android:id="@+id/btnLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="56dp"
         android:background="@drawable/roundbtn"
         android:onClick="doRegisterPlayground"
         android:text="Login"
-        android:textAlignment="center"
 
+        android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="@+id/password"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="@+id/password"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteY="384dp" />
+        app:layout_constraintTop_toBottomOf="@+id/password"
+        tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/tvRegester"

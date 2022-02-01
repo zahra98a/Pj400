@@ -20,7 +20,7 @@
         tools:ignore="MissingConstraints">
 
         <EditText
-            android:id="@+id/etUserName"
+            android:id="@+id/etPlayerEmail"
             android:layout_width="361dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
@@ -28,23 +28,6 @@
             android:inputType="textEmailAddress"
             android:selectAllOnFocus="true" />
     </com.google.android.material.textfield.TextInputLayout>
-
-    <Button
-        android:id="@+id/btnLogin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/roundbtn"
-        android:onClick="doGetList"
-        android:text="Login"
-        android:textAlignment="center"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/password"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="@+id/password"
-        app:layout_constraintTop_toBottomOf="@+id/password"
-        app:layout_constraintVertical_bias="0.253"
-        tools:ignore="MissingConstraints,OnClick" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/password"
@@ -62,7 +45,7 @@
         tools:ignore="MissingConstraints">
 
         <EditText
-            android:id="@+id/etPassword"
+            android:id="@+id/etPlayerPassword"
             android:layout_width="361dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
@@ -72,6 +55,22 @@
             android:selectAllOnFocus="true" />
 
     </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/btnLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/roundbtn"
+        android:text="Login"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/password"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="@+id/password"
+        app:layout_constraintTop_toBottomOf="@+id/password"
+        app:layout_constraintVertical_bias="0.253"
+        tools:ignore="MissingConstraints,OnClick" />
 
     <TextView
         android:id="@+id/tvRegester"

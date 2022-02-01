@@ -7,6 +7,19 @@
     tools:context=".PlayerSignupActivity">
 
     <EditText
+        android:id="@+id/etPlayerConfirmPassword"
+        android:layout_width="361dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:hint="Confirm Password"
+        android:imeOptions="actionDone"
+        android:inputType="textPassword"
+        android:selectAllOnFocus="true"
+        app:layout_constraintEnd_toEndOf="@+id/etPlayerPassword"
+        app:layout_constraintStart_toStartOf="@+id/etPlayerPassword"
+        app:layout_constraintTop_toBottomOf="@+id/etPlayerPassword" />
+
+    <EditText
         android:id="@+id/etUserName"
         android:layout_width="361dp"
         android:layout_height="wrap_content"
@@ -18,20 +31,19 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/btnRegister"
+        android:id="@+id/btnPlayerRegister"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="80dp"
         android:background="@drawable/roundbtn"
-        android:onClick="goLogin"
         android:text="Register"
-        app:layout_constraintEnd_toEndOf="@+id/etPassword"
+        app:layout_constraintEnd_toEndOf="@+id/etPlayerConfirmPassword"
         app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="@+id/etPassword"
-        app:layout_constraintTop_toBottomOf="@+id/etPassword" />
+        app:layout_constraintStart_toStartOf="@+id/etPlayerConfirmPassword"
+        app:layout_constraintTop_toBottomOf="@+id/etPlayerPassword" />
 
     <EditText
-        android:id="@+id/etEmail"
+        android:id="@+id/etPlayerEmail"
         android:layout_width="361dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -44,7 +56,7 @@
         app:layout_constraintTop_toBottomOf="@+id/etUserName" />
 
     <EditText
-        android:id="@+id/etPassword"
+        android:id="@+id/etPlayerPassword"
         android:layout_width="361dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
@@ -52,9 +64,20 @@
         android:imeOptions="actionDone"
         android:inputType="textPassword"
         android:selectAllOnFocus="true"
-        app:layout_constraintEnd_toEndOf="@+id/etEmail"
+        app:layout_constraintEnd_toEndOf="@+id/etPlayerEmail"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/etEmail"
-        app:layout_constraintTop_toBottomOf="@+id/etEmail" />
+        app:layout_constraintStart_toStartOf="@+id/etPlayerEmail"
+        app:layout_constraintTop_toBottomOf="@+id/etPlayerEmail" />
+
+    <TextView
+        android:id="@+id/tvAlreadyRegistered"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:text="Already have an account!"
+        android:onClick="goLogin"
+        tools:layout_editor_absoluteX="233dp"
+        tools:layout_editor_absoluteY="525dp"
+        tools:ignore="MissingConstraints" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
