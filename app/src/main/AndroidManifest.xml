@@ -12,6 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
         <activity
+            android:name=".PlaygroundListActivity"
+            android:exported="false" />
+        <activity
+            android:name=".PlaygroundDetailsActivity"
+            android:exported="false" />
+        <activity
             android:name=".RegisterPlaygroundActivity"
             android:exported="false" />
         <activity
@@ -25,9 +31,6 @@
             android:exported="false" />
         <activity
             android:name=".PlayerLoginActivity"
-            android:exported="false" />
-        <activity
-            android:name=".PlaygroundListActivity"
             android:exported="false" />
         <activity
             android:name=".ChooseUserActivity"
