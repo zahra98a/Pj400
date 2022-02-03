@@ -2,6 +2,7 @@ package edu.zahra.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -19,7 +20,7 @@ public class PlaygroundListActivity extends AppCompatActivity {
 
     ListView playgroundList;
     FirebaseListAdapter adapter;
-    Playgrounds plyayground;
+    Playgrounds playground;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,8 +28,9 @@ public class PlaygroundListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_playground_list_main);
 
         playgroundList = findViewById(R.id.lvPlaygrounds);
-        Query query = FirebaseDatabase.getInstance().getReference().child("Playgrounds");
+        Query query = FirebaseDatabase.getInstance().getReference().child("Playgrounds"); // reference the DB
 
+        // get all names and description from DB
         FirebaseListOptions<Playgrounds> options = new FirebaseListOptions.Builder<Playgrounds>()
                 .setLayout(R.layout.playground_list)
                 .setQuery(query,Playgrounds.class)
@@ -39,40 +41,36 @@ public class PlaygroundListActivity extends AppCompatActivity {
 
                 TextView plyName =  v.findViewById(R.id.tvpName);
                 TextView plyDesc =  v.findViewById(R.id.tvpDescription);
-                plyayground = (Playgrounds) model;
-                plyName.setText(plyayground.getName().toString());
-                plyDesc.setText(plyayground.getDescription().toString());
+                playground = (Playgrounds) model;
+                plyName.setText(playground.getName().toString());
+                plyDesc.setText(playground.getDescription().toString());
             }
         };
         playgroundList.setAdapter(adapter);
 
+        //on click select the playground
         playgroundList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
 
                 DatabaseReference itemRef = adapter.getRef(position);
-                String key = itemRef.getKey().toString();
+                String key = itemRef.getKey().toString(); // get the key of selected playground
 
-                //how to display the children of this key???
+                //Toast.makeText(PlaygroundListActivity.this,key, Toast.LENGTH_SHORT).show();
 
-                Toast.makeText(PlaygroundListActivity.this,key, Toast.LENGTH_SHORT).show();
-               // Toast.makeText(TestMainActivity.this, itemRef.getKey().toString(), Toast.LENGTH_SHORT).show();
-
-                //pass the children to the next activity
-
-                //Intent intent = new Intent(getApplicationContext(),PlaygroundDetailsActivity.class);
-                //intent.putExtra("Name",""+ name);
-               // intent.putExtra("Description",""+ description);
-               // startActivity(intent);
+                Intent intent = new Intent(PlaygroundListActivity.this, PlaygroundDetailsActivity.class);
+                intent.putExtra("Key",""+ key); // pass the selected key to the next activity
+                startActivity(intent); // start the next activity
 
             }
         });
     }
-
+//start the adapter when the user display the activity
     protected void onStart(){
         super.onStart();
         adapter.startListening();
     }
+    //stop the adapter when the user exit the activity
     protected void onStop(){
         super.onStop();
         adapter.stopListening();

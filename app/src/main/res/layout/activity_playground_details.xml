@@ -8,10 +8,10 @@
 
 
     <TextView
-        android:id="@+id/tvName"
+        android:id="@+id/tvSelectedName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="52dp"
         android:layout_weight="1"
         android:text="Name"
         app:layout_constraintEnd_toEndOf="parent"
@@ -20,7 +20,7 @@
         tools:ignore="MissingConstraints" />
 
     <TextView
-        android:id="@+id/tvDiscription"
+        android:id="@+id/tvSelectedDiscription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -29,7 +29,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.55"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvName"
+        app:layout_constraintTop_toBottomOf="@+id/tvSelectedName"
         tools:ignore="MissingConstraints" />
 
     <TextView
@@ -45,7 +45,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tvPrice"
+        android:id="@+id/tvSelectedPrice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -53,10 +53,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvDiscription" />
+        app:layout_constraintTop_toBottomOf="@+id/tvSelectedDiscription"
+        tools:ignore="MissingConstraints" />
 
     <TextView
-        android:id="@+id/tvAreasize"
+        android:id="@+id/tvSelectedAreasize"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -64,10 +65,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.529"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvPrice" />
+        app:layout_constraintTop_toBottomOf="@+id/tvSelectedPrice" />
 
     <TextView
-        android:id="@+id/tvCapacity"
+        android:id="@+id/tvSelectedCapacity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -75,21 +76,21 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.523"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvAreasize" />
+        app:layout_constraintTop_toBottomOf="@+id/tvSelectedAreasize" />
 
     <TextView
-        android:id="@+id/tvOpeningHours"
+        android:id="@+id/tvSelectedOpeningHours"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="4dp"
         android:text="Opening hours"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.584"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvCapacity" />
+        app:layout_constraintTop_toBottomOf="@+id/tvSelectedCapacity" />
 
     <TextView
-        android:id="@+id/tvContactNumber"
+        android:id="@+id/tvSelectedContactNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -97,10 +98,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.601"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvOpeningHours" />
+        app:layout_constraintTop_toBottomOf="@+id/tvSelectedOpeningHours" />
 
     <TextView
-        android:id="@+id/tvLocation"
+        android:id="@+id/tvSelectedLocation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -108,6 +109,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.523"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvContactNumber" />
+        app:layout_constraintTop_toBottomOf="@+id/tvSelectedContactNumber" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
