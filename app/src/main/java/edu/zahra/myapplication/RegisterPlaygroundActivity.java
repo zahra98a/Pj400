@@ -18,6 +18,8 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
@@ -37,6 +39,10 @@ public class RegisterPlaygroundActivity extends AppCompatActivity {
     int Image_Request_Code = 7;
     ProgressDialog progressDialog ;
 
+    FirebaseAuth mAuth;
+    //FirebaseUser mUser;
+    String user_id;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,7 +60,14 @@ public class RegisterPlaygroundActivity extends AppCompatActivity {
         btnbrowse = findViewById(R.id.btnbrowse);
         imgview = findViewById(R.id.image_view);
         playgrounds = new Playgrounds();
-        reff = FirebaseDatabase.getInstance().getReference().child("Playgrounds"); //firebase database
+
+        mAuth = FirebaseAuth.getInstance();
+      //  mUser = mAuth.getCurrentUser();
+
+              user_id = mAuth.getCurrentUser().getUid();
+       // uID = getIntent().getStringExtra("UID"); // get the key from the previous activity
+
+        reff = FirebaseDatabase.getInstance().getReference().child("Playgrounds").child(user_id); //firebase database
         storageReference = FirebaseStorage.getInstance().getReference("Playgrounds"); //firebase storage to save images
         progressDialog = new ProgressDialog(RegisterPlaygroundActivity.this);// context name as project name
 
@@ -128,7 +141,7 @@ public class RegisterPlaygroundActivity extends AppCompatActivity {
                             Playgrounds imageUploadInfo = new Playgrounds(Name,Description,Price,Capacity,AreaSize,OpeningHours,ContactNumber,Location,
                                     taskSnapshot.getUploadSessionUri().toString());
 
-                            reff.push().setValue(imageUploadInfo); // push data to firebase database
+                            reff.setValue(imageUploadInfo); // push data to firebase database
                         }
                     });
         }

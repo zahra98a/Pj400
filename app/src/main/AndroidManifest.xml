@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
         <activity
+            android:name=".EditPlaygroundActivity"
+            android:exported="false" />
+        <activity
             android:name=".PlaygroundListActivity"
             android:exported="false" />
         <activity
