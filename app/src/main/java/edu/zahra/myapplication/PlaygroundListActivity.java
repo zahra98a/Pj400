@@ -75,5 +75,9 @@ public class PlaygroundListActivity extends AppCompatActivity {
         super.onStop();
         adapter.stopListening();
     }
-
+// go to map activity
+    public void doShowMap(View view) {
+        Intent intent = new Intent(PlaygroundListActivity.this, GoogleMapActivity.class);
+        startActivity(intent); // start the next activity
+    }
 }
