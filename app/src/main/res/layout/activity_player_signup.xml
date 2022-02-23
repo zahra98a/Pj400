@@ -12,31 +12,30 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:hint="Confirm Password"
-        app:passwordToggleEnabled="true"
         android:imeOptions="actionDone"
         android:inputType="textPassword"
         android:selectAllOnFocus="true"
         app:layout_constraintEnd_toEndOf="@+id/etPlayerPassword"
         app:layout_constraintStart_toStartOf="@+id/etPlayerPassword"
-        app:layout_constraintTop_toBottomOf="@+id/etPlayerPassword" />
+        app:layout_constraintTop_toBottomOf="@+id/etPlayerPassword"
+        app:passwordToggleEnabled="true" />
 
     <EditText
         android:id="@+id/etUserName"
         android:layout_width="361dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="180dp"
         android:hint="User name"
         android:selectAllOnFocus="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
     <Button
         android:id="@+id/btnPlayerRegister"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="80dp"
-        android:background="@drawable/roundbtn"
+        android:background="#56D55B"
         android:text="Register"
         app:layout_constraintEnd_toEndOf="@+id/etPlayerConfirmPassword"
         app:layout_constraintHorizontal_bias="0.498"
@@ -62,14 +61,14 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:hint="Password"
-        app:passwordToggleEnabled="true"
         android:imeOptions="actionDone"
         android:inputType="textPassword"
         android:selectAllOnFocus="true"
         app:layout_constraintEnd_toEndOf="@+id/etPlayerEmail"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/etPlayerEmail"
-        app:layout_constraintTop_toBottomOf="@+id/etPlayerEmail" />
+        app:layout_constraintTop_toBottomOf="@+id/etPlayerEmail"
+        app:passwordToggleEnabled="true" />
 
     <TextView
         android:id="@+id/tvAlreadyRegistered"
@@ -77,13 +76,39 @@
         android:layout_height="wrap_content"
         android:clickable="true"
         android:onClick="goLogin"
-        android:text="Already have an account!"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="Log In"
+        android:textColor="#B60A0A"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/textView5"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.901"
+        app:layout_constraintHorizontal_bias="0.02"
+        app:layout_constraintStart_toEndOf="@+id/textView5"
+        app:layout_constraintTop_toTopOf="@+id/textView5"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="28dp"
+        android:text="Already have an account!"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnPlayerRegister"
-        app:layout_constraintVertical_bias="0.061"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintVertical_bias="0.025" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="298dp"
+        android:layout_height="274dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="-50dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_background" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

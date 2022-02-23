@@ -121,7 +121,7 @@ public class PlaygroundDetailsActivity extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 String selectedValue = dataSnapshot.getValue(String.class);
-                capacity.setText("capacity: "+selectedValue);
+                capacity.setText("Capacity: "+selectedValue);
             }
 
             @Override

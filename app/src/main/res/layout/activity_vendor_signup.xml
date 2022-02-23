@@ -10,16 +10,16 @@
         android:id="@+id/tvAlreadyRegistered"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="152dp"
         android:clickable="true"
         android:onClick="goLogin"
-        android:text="Already have an account!"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="Log in"
+        android:textColor="#B60A0A"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/textView4"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.897"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnVendorRegister"
-        app:layout_constraintVertical_bias="0.321"
+        app:layout_constraintHorizontal_bias="0.02"
+        app:layout_constraintStart_toEndOf="@+id/textView4"
+        app:layout_constraintTop_toTopOf="@+id/textView4"
         tools:ignore="MissingConstraints" />
 
     <EditText
@@ -39,10 +39,9 @@
         android:id="@+id/etUserName"
         android:layout_width="361dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="188dp"
         android:hint="User name"
         android:selectAllOnFocus="true"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2"
         tools:layout_editor_absoluteX="24dp" />
 
     <EditText
@@ -62,7 +61,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
-        android:background="@drawable/roundbtn"
+        android:background="#56D55B"
         android:onClick="goLogin"
         android:text="Register"
         app:layout_constraintEnd_toEndOf="@+id/etVendorConfirmPassword"
@@ -83,5 +82,30 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/etVendorEmail"
         app:layout_constraintTop_toBottomOf="@+id/etVendorEmail" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="28dp"
+        android:text="Already have an account?"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnVendorRegister"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="298dp"
+        android:layout_height="274dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="-50dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_background" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
