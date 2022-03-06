@@ -20,7 +20,7 @@ public class ChooseUserActivity extends AppCompatActivity {
     }
     //on button clicked go to client side - login activity
     public void doPlayer(View view) {
-        Intent intent = new Intent(this, BookingActivity.class);
+        Intent intent = new Intent(this, FormActivity.class);
         startActivity(intent);
     }
 }

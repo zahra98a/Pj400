@@ -1,5 +1,7 @@
 package edu.zahra.myapplication;
 
+import java.text.DecimalFormat;
+
 public class Playgrounds {
 
     public String imageURL;
@@ -8,23 +10,34 @@ public class Playgrounds {
     public String price;
     public String capacity;
     public String areaSize;
-    public String openingHours;
+    //public String openingHours;
     public String contactNumber;
     public String location;
+
+    public String latitude;
+    public String longitude;
+
+    public String start;
+    public String end;
+
 
     public Playgrounds(){
     }
 
-    public Playgrounds( String name, String description, String price, String capacity, String areaSize,String openingHours,
-                        String contactNumber, String location ,String url) {
+    public Playgrounds( String name, String description, String price, String capacity, String areaSize,//String openingHours,
+                        String contactNumber, String location ,String latitude, String longitude, String start, String end, String url ) {
         this.name = name;
         this.description = description;
         this.price = price;
         this.capacity = capacity;
         this.areaSize = areaSize;
-        this.openingHours = openingHours;
+       // this.openingHours = openingHours;
         this.contactNumber = contactNumber;
         this.location = location;
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.start = start;
+        this.end = end;
         this.imageURL = url;
     }
 
@@ -49,10 +62,10 @@ public class Playgrounds {
     public String getAreaSize() { return areaSize; }
     public void setAreaSize(String areaSize){this.areaSize = areaSize;}
 
-    public String getOpeningHours() {
-        return openingHours;
-    }
-    public void setOpeningHours(String openingHours){this.openingHours = openingHours;}
+    //public String getOpeningHours() {
+       // return openingHours;
+    //}
+   // public void setOpeningHours(String openingHours){this.openingHours = openingHours;}
 
     public String getContactNumber() {
         return contactNumber;
@@ -64,8 +77,29 @@ public class Playgrounds {
     }
     public void setLocation(String location){this.location = location;}
 
+    public String getLatitude() {
+        return latitude;
+    }
+    public void setLatitude(String latitude){this.latitude = latitude;}
+
+    public String getLongitude() {
+        return longitude;
+    }
+    public void setLongitude(String longitude){this.longitude = longitude;}
+
+    public String getStart() {
+        return start;
+    }
+    public void setStart(String start){this.start = start;}
+
+    public String getEnd() {
+        return end;
+    }
+    public void setEnd(String end){this.end = end;}
+
     public String getImageURL() {
         return imageURL;
     }
     public void setImageURL(String imageURL){this.imageURL = imageURL;}
+
 }
