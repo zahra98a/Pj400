@@ -3,11 +3,15 @@ package edu.zahra.myapplication;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -17,13 +21,15 @@ import com.google.firebase.database.ValueEventListener;
 public class PlaygroundDetailsActivity extends AppCompatActivity {
 
     TextView name;
-    TextView location;
+    TextView location, latitude, longitude;
     TextView description;
     TextView price;
     TextView areaSize;
     TextView capacity;
     TextView contactNumber;
-    TextView openingHours;
+   // TextView openingHours;
+
+    ImageView pitchImage;
 
     DatabaseReference reff;
     DatabaseReference keyRef;
@@ -32,11 +38,13 @@ public class PlaygroundDetailsActivity extends AppCompatActivity {
     DatabaseReference priceRef;
     DatabaseReference areaSizeRef;
     DatabaseReference contactNumberRef;
-    DatabaseReference openingHoursRef;
-    DatabaseReference locationRef;
+    //DatabaseReference openingHoursRef;
+    DatabaseReference locationRef, latitudeRef, longitudeRef;
     DatabaseReference capacityRef;
+    DatabaseReference imageRef;
 
-    String key;
+
+    String key, playgoundLatitude, playgoundLongitude, playgoundName, imgURL;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +58,13 @@ public class PlaygroundDetailsActivity extends AppCompatActivity {
         areaSize = findViewById(R.id.tvSelectedAreasize);
         capacity = findViewById(R.id.tvSelectedCapacity);
         contactNumber = findViewById(R.id.tvSelectedContactNumber);
-        openingHours = findViewById(R.id.tvSelectedOpeningHours);
+
+        pitchImage = findViewById(R.id.imgPitch);
+
+
+
+
+       // openingHours = findViewById(R.id.tvSelectedOpeningHours);
 
         key = getIntent().getStringExtra("Key"); // get the key from the previous activity
         reff = FirebaseDatabase.getInstance().getReference("Playgrounds"); // reference the database
@@ -60,16 +74,20 @@ public class PlaygroundDetailsActivity extends AppCompatActivity {
         priceRef = keyRef.child("price"); // reference child price of the selected key
         contactNumberRef = keyRef.child("contactNumber"); // reference child contactNumber of the selected key
         areaSizeRef = keyRef.child("areaSize"); // reference child areaSize of the selected key
-        openingHoursRef = keyRef.child("openingHours"); // reference child openingHours of the selected key
+        //openingHoursRef = keyRef.child("openingHours"); // reference child openingHours of the selected key
         capacityRef = keyRef.child("capacity"); // reference child capacity of the selected key
         locationRef = keyRef.child("location"); // reference child location of the selected key
+        latitudeRef = keyRef.child("latitude");
+        longitudeRef = keyRef.child("longitude");
+
+        imageRef = keyRef.child("imageURL");
 
         //get name value
         nameRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                String selectedValue = dataSnapshot.getValue(String.class);
-                name.setText("Name: "+selectedValue);
+                playgoundName = dataSnapshot.getValue(String.class);
+                name.setText("Name: "+playgoundName);
             }
 
             @Override
@@ -142,6 +160,7 @@ public class PlaygroundDetailsActivity extends AppCompatActivity {
 
             }
         });
+        /*
         //get openingHours value
         openingHoursRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -154,7 +173,7 @@ public class PlaygroundDetailsActivity extends AppCompatActivity {
             public void onCancelled(DatabaseError databaseError) {
 
             }
-        });
+        });*/
          // get location value
         locationRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -162,11 +181,66 @@ public class PlaygroundDetailsActivity extends AppCompatActivity {
                 String  selectedValue = dataSnapshot.getValue(String.class);
                 location.setText("Location: "+selectedValue);
             }
-
             @Override
             public void onCancelled(DatabaseError databaseError) {
 
             }
         });
+
+        latitudeRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                playgoundLatitude = dataSnapshot.getValue(String.class);
+               // location.setText("Location: "+selectedValue);
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+        longitudeRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                playgoundLongitude = dataSnapshot.getValue(String.class);
+                // location.setText("Location: "+selectedValue);
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+        imageRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                imgURL = dataSnapshot.getValue(String.class);
+                // location.setText("Location: "+selectedValue);
+
+
+                Glide.with(PlaygroundDetailsActivity.this)
+                        .load(imgURL)
+                        .into(pitchImage);
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+
+
+    }
+
+    public void goMap(View view) {
+
+
+        Intent intent = new Intent(this, ViewMarkerActivity.class);
+        intent.putExtra("Latitude",""+ playgoundLatitude);
+        intent.putExtra("Longitude",""+ playgoundLongitude);
+        intent.putExtra("Name",""+ playgoundName);
+
+        startActivity(intent); // start the next activity
+
     }
 }

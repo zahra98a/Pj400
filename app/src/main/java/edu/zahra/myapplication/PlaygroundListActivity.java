@@ -1,7 +1,9 @@
 package edu.zahra.myapplication;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
@@ -35,9 +37,17 @@ public class PlaygroundListActivity extends AppCompatActivity {
 
         searchView = findViewById(R.id.searchView);
         playgroundList = findViewById(R.id.lvPlaygrounds);
-        pitchImage = findViewById(R.id.imgPitch);
 
-      //  nn = findViewById(R.id.tvfootballPlayground);
+
+
+       // String urlImage = "https://firebasestorage.googleapis.com/v0/b/pj400-3ef6f.appspot.com/o/Playgrounds%2F1646591797596.jpg?alt=media&token=21a67b88-47ba-4f27-82a5-98b03b8a2cf8";
+
+       // Glide.with(PlaygroundListActivity.this)
+              // .load(urlImage)
+             //   .into(pitchImage);
+
+
+        //  nn = findViewById(R.id.tvfootballPlayground);
 
         Query query = FirebaseDatabase.getInstance().getReference().child("Playgrounds"); // reference the DB
 
@@ -52,13 +62,31 @@ public class PlaygroundListActivity extends AppCompatActivity {
 
                 TextView plyName =  v.findViewById(R.id.tvpName);
                 TextView plyDesc =  v.findViewById(R.id.tvpDescription);
+                pitchImage = v.findViewById(R.id.imgPitch);
+
                 playground = (Playgrounds) model;
                 plyName.setText(playground.getName().toString());
                 plyDesc.setText(playground.getDescription().toString());
 
+
+                String urlImage = playground.getImageURL();
+
+               // String urlImage = "https://firebasestorage.googleapis.com/v0/b/pj400-3ef6f.appspot.com/o/Playgrounds%2F1646591797596.jpg?alt=media&token=21a67b88-47ba-4f27-82a5-98b03b8a2cf8";
+                Glide.with(PlaygroundListActivity.this)
+                        .load(urlImage)
+                        .into(pitchImage);
+
+
+
                // Picasso.get().load(playground.getImageURL()).into(pitchImage);
 
               //  Glide.with(getApplicationContext()).load(playground.getImageURL()).into(pitchImage);
+
+
+               // Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), FilePathUri);
+                //pitchImage.setImageBitmap(bitmap);
+
+
             }
         };
 

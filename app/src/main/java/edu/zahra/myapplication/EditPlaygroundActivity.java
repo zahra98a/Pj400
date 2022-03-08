@@ -29,7 +29,8 @@ public class EditPlaygroundActivity extends AppCompatActivity {
     EditText areaSize;
     EditText capacity;
     EditText contactNumber;
-    EditText openingHours;
+    //EditText openingHours;
+    EditText latitude, longitude;
     Playgrounds playground;
     FirebaseAuth mAuth;
     //FirebaseUser mUser;
@@ -50,7 +51,9 @@ public class EditPlaygroundActivity extends AppCompatActivity {
         areaSize = findViewById(R.id.etAreasize);
         capacity = findViewById(R.id.etCapacity);
         contactNumber = findViewById(R.id.etContactNumber);
-        openingHours = findViewById(R.id.etOpeningHours);
+        //openingHours = findViewById(R.id.etOpeningHours);
+        latitude = findViewById(R.id.etLatitude);
+        longitude = findViewById(R.id.etLongitude);
 
         mAuth = FirebaseAuth.getInstance();
         user_id = mAuth.getCurrentUser().getUid();
@@ -87,11 +90,19 @@ public class EditPlaygroundActivity extends AppCompatActivity {
                        String newContactNumber = String.valueOf(dataSnapshot.child("contactNumber").getValue());
                        contactNumber.setText(newContactNumber);
 
-                       String newOpeningHours = String.valueOf(dataSnapshot.child("openingHours").getValue());
-                       openingHours.setText(newOpeningHours);
+                      // String newOpeningHours = String.valueOf(dataSnapshot.child("openingHours").getValue());
+                      // openingHours.setText(newOpeningHours);
 
                        String newLocation = String.valueOf(dataSnapshot.child("location").getValue());
                        location.setText(newLocation);
+
+                       String newLatitude = String.valueOf(dataSnapshot.child("latitude").getValue());
+                       latitude.setText(newLatitude);
+
+                       String newLongitude = String.valueOf(dataSnapshot.child("longitude").getValue());
+                       longitude.setText(newLongitude);
+
+
 
                    }else {
                        Toast.makeText(EditPlaygroundActivity.this,"You should register your playground first!", Toast.LENGTH_SHORT).show();
@@ -115,8 +126,11 @@ public class EditPlaygroundActivity extends AppCompatActivity {
                 snapshot.getRef().child("areaSize").setValue(areaSize.getText().toString());
                 snapshot.getRef().child("capacity").setValue(capacity.getText().toString());
                 snapshot.getRef().child("contactNumber").setValue(contactNumber.getText().toString());
-                snapshot.getRef().child("openingHours").setValue(openingHours.getText().toString());
+                //snapshot.getRef().child("openingHours").setValue(openingHours.getText().toString());
                 snapshot.getRef().child("location").setValue(location.getText().toString());
+                snapshot.getRef().child("latitude").setValue(latitude.getText().toString());
+                snapshot.getRef().child("longitude").setValue(longitude.getText().toString());
+
                 Toast.makeText(EditPlaygroundActivity.this,"Data updated successfully", Toast.LENGTH_SHORT).show();
 
                 //EditPlaygroundActivity.this.finish();
@@ -145,7 +159,7 @@ public class EditPlaygroundActivity extends AppCompatActivity {
     }
 
     public void doRegesterPlayground(View view) {
-        Intent intent = new Intent(this, RegisterPlaygroundActivity.class);
+        Intent intent = new Intent(this, FormActivity.class);
         // intent.putExtra("UID",""+ mUser);
         startActivity(intent);
     }

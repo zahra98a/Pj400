@@ -15,12 +15,12 @@ public class ChooseUserActivity extends AppCompatActivity {
     }
     //on button clicked go to vendor side - login activity
     public void doVendor(View view) {
-        Intent intent = new Intent(this, VendorLoginActivity.class);
+        Intent intent = new Intent(this, FormActivity.class);
         startActivity(intent);
     }
     //on button clicked go to client side - login activity
     public void doPlayer(View view) {
-        Intent intent = new Intent(this, FormActivity.class);
+        Intent intent = new Intent(this, PlaygroundListActivity.class);
         startActivity(intent);
     }
 }

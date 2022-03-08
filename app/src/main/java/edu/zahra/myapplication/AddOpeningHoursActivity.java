@@ -1,5 +1,6 @@
 package edu.zahra.myapplication;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
@@ -10,9 +11,9 @@ import android.view.View;
 import android.webkit.MimeTypeMap;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
@@ -94,24 +95,77 @@ public class AddOpeningHoursActivity extends AppCompatActivity {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
 
-                            // store data in realtime database
-                           /* String Name = name.getText().toString().trim();
-                            String Description = description.getText().toString().trim();
-                            String Price = price.getText().toString().trim();
-                            String Capacity = capacity.getText().toString().trim();
-                            String AreaSize = areaSize.getText().toString().trim();
-                            String OpeningHours = openingHours.getText().toString().trim();
-                            String ContactNumber = contactNumber.getText().toString().trim();
-                            String Location = location.getText().toString().trim(); */
+                            storageReference2.getDownloadUrl().addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    //do something
+                                }
+                            }).addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                @Override
+                                public void onSuccess(Uri uri) {
+                                    //get your image uri here
+                                    Uri imgUrl = uri;
+                                    String imgStringUrl = imgUrl.toString();
+
+                                    //link.setText(imgStringUrl);
+
+                                    String Start = from.getText().toString().trim();
+                                    String End = to.getText().toString().trim();
+
+                                    progressDialog.dismiss();
+                                    Toast.makeText(getApplicationContext(), "Data Uploaded Successfully ", Toast.LENGTH_LONG).show();
+
+
+                                    // @SuppressWarnings("VisibleForTests")
+                                    // Playgrounds imageUploadInfo = new Playgrounds(Name,Description,Price,Capacity,AreaSize,ContactNumber,Location,Latitude, Longitude, Start, End,
+                                    // downloadUri.toString());
+                                    @SuppressWarnings("VisibleForTests")
+                                    Playgrounds imageUploadInfo = new Playgrounds(Name,Description,Price,Capacity,AreaSize,ContactNumber,Location,Latitude, Longitude, Start, End,
+                                            imgStringUrl);
+
+                                    reff.setValue(imageUploadInfo); // push data to firebase database
+
+                                }
+                            });
+
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    // do something
+                }
+            });
+
+
+        }
+
+                   /* .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
 
                             String Start = from.getText().toString().trim();
                             String End = to.getText().toString().trim();
 
+                          //  Task<Uri> downloadUri = taskSnapshot.getStorage().getDownloadUrl();
+
+                          // String downloadUri = taskSnapshot.getStorage().getDownloadUrl().toString();
+
+
                             progressDialog.dismiss();
                             Toast.makeText(getApplicationContext(), "Data Uploaded Successfully ", Toast.LENGTH_LONG).show();
-                              @SuppressWarnings("VisibleForTests")
-                                Playgrounds imageUploadInfo = new Playgrounds(Name,Description,Price,Capacity,AreaSize,ContactNumber,Location,Latitude, Longitude, Start, End,
-                                    taskSnapshot.getUploadSessionUri().toString());
+
+                           // Uri downloadUri = taskSnapshot.getDownloadUrl();
+
+                            //String downloadUri = taskSnapshot.getStorage().getDownloadUrl().toString();
+
+                           // Uri downloadUri = storageReference2.getDownloadUrl().getResult();
+
+                             // @SuppressWarnings("VisibleForTests")
+                               // Playgrounds imageUploadInfo = new Playgrounds(Name,Description,Price,Capacity,AreaSize,ContactNumber,Location,Latitude, Longitude, Start, End,
+                                     // downloadUri.toString());
+                            @SuppressWarnings("VisibleForTests")
+                           Playgrounds imageUploadInfo = new Playgrounds(Name,Description,Price,Capacity,AreaSize,ContactNumber,Location,Latitude, Longitude, Start, End,
+                                   taskSnapshot.getUploadSessionUri().toString());
 
                                 reff.setValue(imageUploadInfo); // push data to firebase database
                         }
@@ -119,6 +173,6 @@ public class AddOpeningHoursActivity extends AppCompatActivity {
         }
         else {
             Toast.makeText(AddOpeningHoursActivity.this, "Please check your inputs", Toast.LENGTH_LONG).show();
-        }
+        } */
     }
 }

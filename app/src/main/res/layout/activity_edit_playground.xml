@@ -31,6 +31,24 @@
         app:layout_constraintTop_toBottomOf="@+id/etContactNumber" />
 
     <EditText
+        android:id="@+id/etLatitude"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Latitude"
+        app:layout_constraintEnd_toEndOf="@+id/etLocation"
+        app:layout_constraintStart_toStartOf="@+id/etLocation"
+        app:layout_constraintTop_toBottomOf="@+id/etLocation" />
+
+    <EditText
+        android:id="@+id/etLongitude"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Longitude"
+        app:layout_constraintEnd_toEndOf="@+id/etLatitude"
+        app:layout_constraintStart_toStartOf="@+id/etLatitude"
+        app:layout_constraintTop_toBottomOf="@+id/etLatitude" />
+
+    <EditText
         android:id="@+id/etDiscription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -58,12 +76,11 @@
         android:id="@+id/etContactNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
         android:text="Contact number"
-        app:layout_constraintEnd_toEndOf="@+id/etOpeningHours"
+        app:layout_constraintEnd_toEndOf="@+id/etCapacity"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/etOpeningHours"
-        app:layout_constraintTop_toBottomOf="@+id/etOpeningHours" />
+        app:layout_constraintStart_toStartOf="@+id/etCapacity"
+        app:layout_constraintTop_toBottomOf="@+id/etCapacity" />
 
     <EditText
         android:id="@+id/etAreasize"
@@ -75,17 +92,6 @@
         app:layout_constraintHorizontal_bias="0.06"
         app:layout_constraintStart_toStartOf="@+id/etPrice"
         app:layout_constraintTop_toBottomOf="@+id/etPrice" />
-
-    <EditText
-        android:id="@+id/etOpeningHours"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="Opening hours"
-        app:layout_constraintEnd_toEndOf="@+id/etCapacity"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/etCapacity"
-        app:layout_constraintTop_toBottomOf="@+id/etCapacity" />
 
     <EditText
         android:id="@+id/etPrice"
@@ -104,13 +110,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="104dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="24dp"
         android:background="#2E49DC"
         android:onClick="doUpdate"
         android:text="Update"
         android:textColor="#FFFFFF"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etLocation"
+        app:layout_constraintTop_toBottomOf="@+id/etLongitude"
         tools:ignore="MissingConstraints" />
 
     <Button
@@ -137,7 +143,8 @@
         android:text="Register playground"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnupdate"
-        app:layout_constraintVertical_bias="0.167" />
+        app:layout_constraintVertical_bias="0.101" />
 </androidx.constraintlayout.widget.ConstraintLayout>
