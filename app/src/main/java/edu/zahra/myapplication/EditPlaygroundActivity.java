@@ -22,21 +22,12 @@ import com.google.firebase.database.ValueEventListener;
 
 public class EditPlaygroundActivity extends AppCompatActivity {
 
-    EditText name;
-    EditText location;
-    EditText description;
-    EditText price;
-    EditText areaSize;
-    EditText capacity;
-    EditText contactNumber;
-    //EditText openingHours;
-    EditText latitude, longitude;
+    EditText name, description, price, capacity, areaSize, contactNumber, location, latitude, longitude;
     Playgrounds playground;
     FirebaseAuth mAuth;
     //FirebaseUser mUser;
     String user_id;
-    DatabaseReference reff;
-    DatabaseReference keyReff;
+    DatabaseReference reff, keyReff;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

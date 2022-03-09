@@ -25,20 +25,16 @@ import com.google.firebase.storage.UploadTask;
 public class AddOpeningHoursActivity extends AppCompatActivity {
 
     String Name, Description, Price, Capacity, AreaSize, ContactNumber, Location, Latitude, Longitude;
-    Uri FilePathUri1;
+    Uri FilePathUri1, imgUrl;
     EditText from, to;
-
     Button btnSubmit;
     DatabaseReference reff;
     Playgrounds playgrounds;
     StorageReference storageReference;
     int Image_Request_Code = 7;
     ProgressDialog progressDialog ;
-
     FirebaseAuth mAuth;
-    //FirebaseUser mUser;
-    String user_id;
-
+    String user_id, imgStringUrl, Start, End ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -104,21 +100,14 @@ public class AddOpeningHoursActivity extends AppCompatActivity {
                                 @Override
                                 public void onSuccess(Uri uri) {
                                     //get your image uri here
-                                    Uri imgUrl = uri;
-                                    String imgStringUrl = imgUrl.toString();
-
-                                    //link.setText(imgStringUrl);
-
-                                    String Start = from.getText().toString().trim();
-                                    String End = to.getText().toString().trim();
+                                     imgUrl = uri;
+                                     imgStringUrl = imgUrl.toString();
+                                     Start = from.getText().toString().trim();
+                                     End = to.getText().toString().trim();
 
                                     progressDialog.dismiss();
                                     Toast.makeText(getApplicationContext(), "Data Uploaded Successfully ", Toast.LENGTH_LONG).show();
 
-
-                                    // @SuppressWarnings("VisibleForTests")
-                                    // Playgrounds imageUploadInfo = new Playgrounds(Name,Description,Price,Capacity,AreaSize,ContactNumber,Location,Latitude, Longitude, Start, End,
-                                    // downloadUri.toString());
                                     @SuppressWarnings("VisibleForTests")
                                     Playgrounds imageUploadInfo = new Playgrounds(Name,Description,Price,Capacity,AreaSize,ContactNumber,Location,Latitude, Longitude, Start, End,
                                             imgStringUrl);
@@ -127,7 +116,6 @@ public class AddOpeningHoursActivity extends AppCompatActivity {
 
                                 }
                             });
-
                         }
                     }).addOnFailureListener(new OnFailureListener() {
                 @Override
@@ -135,44 +123,6 @@ public class AddOpeningHoursActivity extends AppCompatActivity {
                     // do something
                 }
             });
-
-
         }
-
-                   /* .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                        @Override
-                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-
-                            String Start = from.getText().toString().trim();
-                            String End = to.getText().toString().trim();
-
-                          //  Task<Uri> downloadUri = taskSnapshot.getStorage().getDownloadUrl();
-
-                          // String downloadUri = taskSnapshot.getStorage().getDownloadUrl().toString();
-
-
-                            progressDialog.dismiss();
-                            Toast.makeText(getApplicationContext(), "Data Uploaded Successfully ", Toast.LENGTH_LONG).show();
-
-                           // Uri downloadUri = taskSnapshot.getDownloadUrl();
-
-                            //String downloadUri = taskSnapshot.getStorage().getDownloadUrl().toString();
-
-                           // Uri downloadUri = storageReference2.getDownloadUrl().getResult();
-
-                             // @SuppressWarnings("VisibleForTests")
-                               // Playgrounds imageUploadInfo = new Playgrounds(Name,Description,Price,Capacity,AreaSize,ContactNumber,Location,Latitude, Longitude, Start, End,
-                                     // downloadUri.toString());
-                            @SuppressWarnings("VisibleForTests")
-                           Playgrounds imageUploadInfo = new Playgrounds(Name,Description,Price,Capacity,AreaSize,ContactNumber,Location,Latitude, Longitude, Start, End,
-                                   taskSnapshot.getUploadSessionUri().toString());
-
-                                reff.setValue(imageUploadInfo); // push data to firebase database
-                        }
-                    });
-        }
-        else {
-            Toast.makeText(AddOpeningHoursActivity.this, "Please check your inputs", Toast.LENGTH_LONG).show();
-        } */
     }
 }

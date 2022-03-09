@@ -10,16 +10,12 @@ public class Playgrounds {
     public String price;
     public String capacity;
     public String areaSize;
-    //public String openingHours;
     public String contactNumber;
     public String location;
-
     public String latitude;
     public String longitude;
-
     public String start;
     public String end;
-
 
     public Playgrounds(){
     }

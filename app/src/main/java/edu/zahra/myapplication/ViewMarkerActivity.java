@@ -14,8 +14,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 public class ViewMarkerActivity extends AppCompatActivity
         implements OnMapReadyCallback {
 
-    double latitude;
-    double longitude;
+    double latitude, longitude;
     String name;
 
     GoogleMap map;

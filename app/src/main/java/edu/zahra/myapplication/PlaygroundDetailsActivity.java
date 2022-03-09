@@ -20,29 +20,11 @@ import com.google.firebase.database.ValueEventListener;
 
 public class PlaygroundDetailsActivity extends AppCompatActivity {
 
-    TextView name;
-    TextView location, latitude, longitude;
-    TextView description;
-    TextView price;
-    TextView areaSize;
-    TextView capacity;
-    TextView contactNumber;
-   // TextView openingHours;
-
+    TextView name, location, description, price, areaSize, capacity, contactNumber;
     ImageView pitchImage;
 
-    DatabaseReference reff;
-    DatabaseReference keyRef;
-    DatabaseReference nameRef;
-    DatabaseReference descriptionRef;
-    DatabaseReference priceRef;
-    DatabaseReference areaSizeRef;
-    DatabaseReference contactNumberRef;
-    //DatabaseReference openingHoursRef;
-    DatabaseReference locationRef, latitudeRef, longitudeRef;
-    DatabaseReference capacityRef;
-    DatabaseReference imageRef;
-
+    DatabaseReference reff, keyRef, nameRef, descriptionRef, priceRef, areaSizeRef, contactNumberRef,
+    locationRef, latitudeRef, longitudeRef, capacityRef, imageRef;
 
     String key, playgoundLatitude, playgoundLongitude, playgoundName, imgURL;
 
@@ -58,13 +40,7 @@ public class PlaygroundDetailsActivity extends AppCompatActivity {
         areaSize = findViewById(R.id.tvSelectedAreasize);
         capacity = findViewById(R.id.tvSelectedCapacity);
         contactNumber = findViewById(R.id.tvSelectedContactNumber);
-
         pitchImage = findViewById(R.id.imgPitch);
-
-
-
-
-       // openingHours = findViewById(R.id.tvSelectedOpeningHours);
 
         key = getIntent().getStringExtra("Key"); // get the key from the previous activity
         reff = FirebaseDatabase.getInstance().getReference("Playgrounds"); // reference the database
@@ -74,12 +50,10 @@ public class PlaygroundDetailsActivity extends AppCompatActivity {
         priceRef = keyRef.child("price"); // reference child price of the selected key
         contactNumberRef = keyRef.child("contactNumber"); // reference child contactNumber of the selected key
         areaSizeRef = keyRef.child("areaSize"); // reference child areaSize of the selected key
-        //openingHoursRef = keyRef.child("openingHours"); // reference child openingHours of the selected key
         capacityRef = keyRef.child("capacity"); // reference child capacity of the selected key
         locationRef = keyRef.child("location"); // reference child location of the selected key
         latitudeRef = keyRef.child("latitude");
         longitudeRef = keyRef.child("longitude");
-
         imageRef = keyRef.child("imageURL");
 
         //get name value
@@ -186,19 +160,19 @@ public class PlaygroundDetailsActivity extends AppCompatActivity {
 
             }
         });
-
+        // get location value latitude
         latitudeRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 playgoundLatitude = dataSnapshot.getValue(String.class);
-               // location.setText("Location: "+selectedValue);
+
             }
             @Override
             public void onCancelled(DatabaseError databaseError) {
 
             }
         });
-
+        // get location value longitude
         longitudeRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -210,7 +184,7 @@ public class PlaygroundDetailsActivity extends AppCompatActivity {
 
             }
         });
-
+       // get image url and set it into imageview
         imageRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {

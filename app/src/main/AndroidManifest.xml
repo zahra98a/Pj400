@@ -19,9 +19,6 @@
             android:name=".TestLinkActivity"
             android:exported="false" />
         <activity
-            android:name=".imageActivity"
-            android:exported="false" />
-        <activity
             android:name=".ViewMarkerActivity"
             android:exported="false" />
         <activity
