@@ -2,7 +2,9 @@ package edu.zahra.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -40,12 +42,22 @@ public class ViewMarkerActivity extends AppCompatActivity
         // and move the map's camera to the same location.
         // [END_EXCLUDE]
        // LatLng sydney = new LatLng(54.279311, -8.460631);
-        LatLng sydney = new LatLng(latitude, longitude);
+        LatLng marker = new LatLng(latitude, longitude);
         googleMap.addMarker(new MarkerOptions()
-                .position(sydney)
+                .position(marker)
                 .title(name));
         // [START_EXCLUDE silent]
-        googleMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        googleMap.moveCamera(CameraUpdateFactory.newLatLng(marker));
         // [END_EXCLUDE]
+    }
+
+    public void doBack(View view) {
+        Intent intent = new Intent(this, PlaygroundDetailsActivity.class);
+        startActivity(intent); // start the next activity
+    }
+
+    public void doLogout(View view) {
+        Intent intent = new Intent(this, ChooseUserActivity.class);
+        startActivity(intent); // start the next activity
     }
 }

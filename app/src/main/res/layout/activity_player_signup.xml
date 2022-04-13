@@ -8,9 +8,8 @@
 
     <EditText
         android:id="@+id/etPlayerConfirmPassword"
-        android:layout_width="361dp"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
         android:hint="Confirm Password"
         android:imeOptions="actionDone"
         android:inputType="textPassword"
@@ -22,7 +21,7 @@
 
     <EditText
         android:id="@+id/etUserName"
-        android:layout_width="361dp"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:hint="User name"
         android:selectAllOnFocus="true"
@@ -35,7 +34,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="80dp"
-        android:background="#56D55B"
+        android:background="@drawable/roundbtn"
+        android:backgroundTint="#56D55B"
         android:text="Register"
         app:layout_constraintEnd_toEndOf="@+id/etPlayerConfirmPassword"
         app:layout_constraintHorizontal_bias="0.498"
@@ -44,9 +44,8 @@
 
     <EditText
         android:id="@+id/etPlayerEmail"
-        android:layout_width="361dp"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
         android:hint="Email"
         android:inputType="textEmailAddress"
         android:selectAllOnFocus="true"
@@ -57,9 +56,8 @@
 
     <EditText
         android:id="@+id/etPlayerPassword"
-        android:layout_width="361dp"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
         android:hint="Password"
         android:imeOptions="actionDone"
         android:inputType="textPassword"

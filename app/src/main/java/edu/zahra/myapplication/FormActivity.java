@@ -116,4 +116,16 @@ public class FormActivity extends AppCompatActivity {
 
         startActivity(intent); // start the next activity
     }
+
+    public void doBack(View view) {
+        Intent intent = new Intent(this, VendorMainActivity.class);
+        // intent.putExtra("UID",""+ mUser);
+        startActivity(intent);
+    }
+
+    public void doLogout(View view) {
+        Intent intent = new Intent(this, ChooseUserActivity.class);
+        // intent.putExtra("UID",""+ mUser);
+        startActivity(intent);
+    }
 }

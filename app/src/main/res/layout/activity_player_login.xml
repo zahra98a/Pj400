@@ -6,9 +6,10 @@
     android:layout_height="match_parent"
     tools:context=".PlayerLoginActivity">
 
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/email"
-        android:layout_width="361dp"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:hint="Email"
         android:textColorHint="#A6171616"
@@ -20,18 +21,18 @@
 
         <EditText
             android:id="@+id/etPlayerEmail"
-            android:layout_width="361dp"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:inputType="textEmailAddress"
             android:selectAllOnFocus="true" />
+
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/password"
-        android:layout_width="361dp"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
         android:hint="Password"
         android:textColorHint="#A6171616"
         app:hintEnabled="true"
@@ -57,17 +58,15 @@
         android:id="@+id/btnLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="28dp"
-        android:background="#56D55B"
+        android:layout_marginTop="44dp"
+        android:background="@drawable/roundbtn"
+        android:backgroundTint="#56D55B"
         android:text="Login"
         android:textAlignment="center"
-        app:layout_constraintBottom_toTopOf="@+id/textView3"
         app:layout_constraintEnd_toEndOf="@+id/password"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="@+id/password"
         app:layout_constraintTop_toBottomOf="@+id/password"
-        app:layout_constraintVertical_bias="0.056"
         tools:ignore="MissingConstraints,OnClick" />
 
     <TextView
@@ -90,11 +89,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="100dp"
-        android:layout_marginBottom="268dp"
         android:text="Don't have an account?"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnLogin"
+        app:layout_constraintVertical_bias="0.057" />
 
     <ImageView
         android:id="@+id/imageView2"

@@ -16,6 +16,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
         <activity
+            android:name=".VendorMainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".TestmapActivity"
+            android:exported="false" />
+        <activity
             android:name=".TimeSlotActivity"
             android:exported="false" />
         <activity

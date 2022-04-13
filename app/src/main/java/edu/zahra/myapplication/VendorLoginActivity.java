@@ -92,8 +92,10 @@ public class VendorLoginActivity extends AppCompatActivity {
         }
     }
     public void goToNextActivity() {
-        Intent intent = new Intent(this, EditPlaygroundActivity.class);
+        Intent intent = new Intent(this, VendorMainActivity.class);
        // intent.putExtra("UID",""+ mUser);
         startActivity(intent);
     }
+
+
 }

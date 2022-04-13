@@ -19,6 +19,9 @@ import com.firebase.ui.database.FirebaseListOptions;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
+
+import java.util.ArrayList;
+import java.util.List;
 //import com.squareup.picasso.Picasso;
 
 public class PlaygroundListActivity extends AppCompatActivity {
@@ -28,7 +31,13 @@ public class PlaygroundListActivity extends AppCompatActivity {
     Playgrounds playground;
     SearchView searchView;
     ImageView pitchImage;
-
+    String lat;
+    String lon;
+    //String array[];
+    //List<Integer> array = new ArrayList<Integer>();
+    List<String> arrayLat = new ArrayList<String>();
+    List<String> arrayLon = new ArrayList<String>();
+            //ArrayList array= new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,12 +45,6 @@ public class PlaygroundListActivity extends AppCompatActivity {
 
         searchView = findViewById(R.id.searchView);
         playgroundList = findViewById(R.id.lvPlaygrounds);
-
-       // String urlImage = "https://firebasestorage.googleapis.com/v0/b/pj400-3ef6f.appspot.com/o/Playgrounds%2F1646591797596.jpg?alt=media&token=21a67b88-47ba-4f27-82a5-98b03b8a2cf8";
-
-       // Glide.with(PlaygroundListActivity.this)
-              // .load(urlImage)
-             //   .into(pitchImage);
 
         Query query = FirebaseDatabase.getInstance().getReference().child("Playgrounds"); // reference the DB
 
@@ -62,21 +65,18 @@ public class PlaygroundListActivity extends AppCompatActivity {
                 plyName.setText(playground.getName().toString());
                 plyDesc.setText(playground.getDescription().toString());
 
+                lat = playground.getLatitude();
+                lon = playground.getLongitude();
+                arrayLat.add(lat);
+                arrayLon.add(lon);
 
+               // array.add(lat);
                 String urlImage = playground.getImageURL();
 
                // String urlImage = "https://firebasestorage.googleapis.com/v0/b/pj400-3ef6f.appspot.com/o/Playgrounds%2F1646591797596.jpg?alt=media&token=21a67b88-47ba-4f27-82a5-98b03b8a2cf8";
                 Glide.with(PlaygroundListActivity.this)
                         .load(urlImage)
                         .into(pitchImage);
-
-               // Picasso.get().load(playground.getImageURL()).into(pitchImage);
-
-              //  Glide.with(getApplicationContext()).load(playground.getImageURL()).into(pitchImage);
-
-               // Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), FilePathUri);
-                //pitchImage.setImageBitmap(bitmap);
-
             }
         };
 
@@ -136,7 +136,17 @@ public class PlaygroundListActivity extends AppCompatActivity {
     }
 // go to map activity
     public void doShowMap(View view) {
-        Intent intent = new Intent(PlaygroundListActivity.this, GoogleMapActivity.class);
-        startActivity(intent); // start the next activity
+        Intent intent = new Intent(PlaygroundListActivity.this, TestmapActivity.class);
+       // intent.putExtra("Key",""+ array);
+
+        intent.putStringArrayListExtra("arrayLat", (ArrayList<String>) arrayLat);
+        intent.putStringArrayListExtra("arrayLon", (ArrayList<String>) arrayLon);
+        startActivity(intent); // start the next activityBundle
+
+    }
+    public void doLogout(View view) {
+        Intent intent = new Intent(this, ChooseUserActivity.class);
+        // intent.putExtra("UID",""+ mUser);
+        startActivity(intent);
     }
 }

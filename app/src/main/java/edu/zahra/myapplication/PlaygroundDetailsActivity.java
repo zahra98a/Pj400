@@ -61,7 +61,7 @@ public class PlaygroundDetailsActivity extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 playgoundName = dataSnapshot.getValue(String.class);
-                name.setText("Name: "+playgoundName);
+                name.setText(playgoundName);
             }
 
             @Override
@@ -208,7 +208,6 @@ public class PlaygroundDetailsActivity extends AppCompatActivity {
 
     public void goMap(View view) {
 
-
         Intent intent = new Intent(this, ViewMarkerActivity.class);
         intent.putExtra("Latitude",""+ playgoundLatitude);
         intent.putExtra("Longitude",""+ playgoundLongitude);
@@ -216,5 +215,15 @@ public class PlaygroundDetailsActivity extends AppCompatActivity {
 
         startActivity(intent); // start the next activity
 
+    }
+
+    public void doBack(View view) {
+        Intent intent = new Intent(this, PlaygroundListActivity.class);
+        startActivity(intent); // start the next activity
+    }
+
+    public void doLogout(View view) {
+        Intent intent = new Intent(this, ChooseUserActivity.class);
+        startActivity(intent); // start the next activity
     }
 }

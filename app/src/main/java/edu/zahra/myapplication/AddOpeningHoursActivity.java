@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
 import android.content.ContentResolver;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
@@ -124,5 +125,16 @@ public class AddOpeningHoursActivity extends AppCompatActivity {
                 }
             });
         }
+    }
+
+    public void doBack(View view) {
+        Intent intent = new Intent(this, AddLocationActivity.class);
+        startActivity(intent);
+    }
+
+    public void doLogout(View view) {
+        Intent intent = new Intent(this, ChooseUserActivity.class);
+        // intent.putExtra("UID",""+ mUser);
+        startActivity(intent);
     }
 }

@@ -94,7 +94,6 @@ public class EditPlaygroundActivity extends AppCompatActivity {
                        longitude.setText(newLongitude);
 
 
-
                    }else {
                        Toast.makeText(EditPlaygroundActivity.this,"You should register your playground first!", Toast.LENGTH_SHORT).show();
                    }
@@ -149,8 +148,14 @@ public class EditPlaygroundActivity extends AppCompatActivity {
         });
     }
 
-    public void doRegesterPlayground(View view) {
-        Intent intent = new Intent(this, FormActivity.class);
+    public void doBack(View view) {
+        Intent intent = new Intent(this, VendorMainActivity.class);
+        // intent.putExtra("UID",""+ mUser);
+        startActivity(intent);
+    }
+
+    public void doLogout(View view) {
+        Intent intent = new Intent(this, ChooseUserActivity.class);
         // intent.putExtra("UID",""+ mUser);
         startActivity(intent);
     }

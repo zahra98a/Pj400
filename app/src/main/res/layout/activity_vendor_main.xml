@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".VendorMainActivity">
+
+    <Button
+        android:id="@+id/btnRegisterPitch"
+        android:layout_width="210dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="288dp"
+        android:background="@drawable/roundbtn"
+        android:backgroundTint="#4C7A34"
+        android:onClick="doRegesterPlayground"
+        android:text="Register a playground"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnEditPlayground"
+        android:layout_width="210dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/roundbtn"
+        android:backgroundTint="#4C7A34"
+        android:onClick="doEditPlayground"
+        android:text="Edit playground"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/btnRegisterPitch"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/btnRegisterPitch"
+        app:layout_constraintTop_toBottomOf="@+id/btnRegisterPitch"
+        app:layout_constraintVertical_bias="0.009" />
+</androidx.constraintlayout.widget.ConstraintLayout>
