@@ -16,7 +16,7 @@ public class ChooseUserActivity extends AppCompatActivity {
     }
     //on button clicked go to vendor side - login activity
     public void doVendor(View view) {
-        Intent intent = new Intent(this, VendorLoginActivity.class);
+        Intent intent = new Intent(this, TimeListActivity.class);
         startActivity(intent);
     }
     //on button clicked go to client side - login activity

@@ -104,7 +104,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="Area size"
+        android:hint="Area size 20x20"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="@+id/etContactNumber"
         app:layout_constraintHorizontal_bias="0.0"

@@ -226,4 +226,9 @@ public class PlaygroundDetailsActivity extends AppCompatActivity {
         Intent intent = new Intent(this, ChooseUserActivity.class);
         startActivity(intent); // start the next activity
     }
+
+    public void doBooking(View view) {
+        Intent intent = new Intent(this, TimeListActivity.class);
+        startActivity(intent); // start the next activity
+    }
 }
