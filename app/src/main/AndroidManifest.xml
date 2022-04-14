@@ -15,6 +15,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
+
+        <meta-data
+            android:name="com.google.android.gms.wallet.api.enabled"
+            android:value="true"/>
+
+        <meta-data
+            android:name="sqip.SQUARE_APPLICATION_ID"
+            android:value="sandbox-sq0idb-FwcESer1C-Qf3-ojmwxpBg"/>
+
         <activity
             android:name=".VendorMainActivity"
             android:exported="false" />
@@ -77,6 +86,9 @@
         <activity
             android:name=".PlayerLoginActivity"
             android:exported="false" />
+
+
+
         <activity
             android:name=".ChooseUserActivity"
             android:exported="true">
