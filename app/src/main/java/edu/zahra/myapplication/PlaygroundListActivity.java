@@ -33,11 +33,13 @@ public class PlaygroundListActivity extends AppCompatActivity {
     ImageView pitchImage;
     String lat;
     String lon;
+    String name;
     //String array[];
     //List<Integer> array = new ArrayList<Integer>();
     List<String> arrayLat = new ArrayList<String>();
     List<String> arrayLon = new ArrayList<String>();
-            //ArrayList array= new ArrayList<>();
+    List<String> arrayName = new ArrayList<String>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,9 +69,10 @@ public class PlaygroundListActivity extends AppCompatActivity {
 
                 lat = playground.getLatitude();
                 lon = playground.getLongitude();
+                name = playground.getName();
                 arrayLat.add(lat);
                 arrayLon.add(lon);
-
+                arrayName.add(name);
                // array.add(lat);
                 String urlImage = playground.getImageURL();
 
@@ -139,9 +142,12 @@ public class PlaygroundListActivity extends AppCompatActivity {
         Intent intent = new Intent(PlaygroundListActivity.this, GoogleMapActivity.class);
        // intent.putExtra("Key",""+ array);
 
-        //pass the array list of location
+        //pass the array list of locations and names
         intent.putStringArrayListExtra("arrayLat", (ArrayList<String>) arrayLat);
         intent.putStringArrayListExtra("arrayLon", (ArrayList<String>) arrayLon);
+
+        intent.putStringArrayListExtra("arrayName", (ArrayList<String>) arrayName);
+
         startActivity(intent); // start the next activityBundle
 
     }

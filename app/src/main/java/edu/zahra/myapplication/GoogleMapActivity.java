@@ -73,9 +73,11 @@ public class GoogleMapActivity extends FragmentActivity implements
     private ArrayList<LatLng> locationArrayList;
     ArrayList<String> arrayLat;
     ArrayList<String> arrayLon;
+    ArrayList<String> arrayname;
 
     double[] longitudeArray;
     double[] latitudeArray;
+    String[] nameArray;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,16 +95,22 @@ public class GoogleMapActivity extends FragmentActivity implements
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
+
+          //get arrays from previous activity
         Intent intent=getIntent();
         arrayLat = (intent.getStringArrayListExtra("arrayLat"));
         arrayLon = (intent.getStringArrayListExtra("arrayLon"));
+        arrayname = (intent.getStringArrayListExtra("arrayName"));
 
-        latitudeArray = new double[arrayLat.size()]; //create an array with the size of the failList
+        //create an array with the size of the Lat & Lon
+        latitudeArray = new double[arrayLat.size()];
         longitudeArray = new double[arrayLon.size()];
+        nameArray = new String[arrayname.size()];
 
         for (int i = 0; i < arrayLat.size(); ++i) { //iterate over the elements of the list
             latitudeArray[i] = Double.parseDouble(arrayLat.get(i)); //store each element as a double in the array
             longitudeArray[i] = Double.parseDouble(arrayLon.get(i));
+            nameArray[i] = arrayname.get(i);
         }
 
 
@@ -161,15 +169,6 @@ public class GoogleMapActivity extends FragmentActivity implements
         Toast.makeText(this, "Searching for Nearby Playgrounds...", Toast.LENGTH_SHORT).show();
         Toast.makeText(this, "Showing Nearby Playgrounds...", Toast.LENGTH_SHORT).show();*/
 
-
-
-
-
-
-
-
-
-
     }
     private String getUrl(double latitide, double longitude, String nearbyPlace)
     {
@@ -211,20 +210,22 @@ public class GoogleMapActivity extends FragmentActivity implements
             // locationArrayList.add(failsArray[i])
 
             // LatLng sydney = new LatLng(54.279311, -8.460631);
+
+           // add marker to each location of our array list.
             LatLng marker = new LatLng(latitudeArray[i], longitudeArray[i]);
             googleMap.addMarker(new MarkerOptions()
                     .position(marker)
-                    .title("name"));
+                    .title(nameArray[i]));
+
+            // below lin is use to zoom our camera on map.
+            map.animateCamera(CameraUpdateFactory.zoomTo(3.0f));
+
 
             // [START_EXCLUDE silent]
             // googleMap.moveCamera(CameraUpdateFactory.newLatLng(marker));
 
-
             // below line is use to add marker to each location of our array list.
             // map.addMarker(new MarkerOptions().position(locationArrayList.get(i)).title("Marker"));
-
-            // below lin is use to zoom our camera on map.
-            // map.animateCamera(CameraUpdateFactory.zoomTo(18.0f));
 
             // below line is use to move our camera to the specific location.
             //  map.moveCamera(CameraUpdateFactory.newLatLng(locationArrayList.get(i)));
