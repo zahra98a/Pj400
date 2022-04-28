@@ -1,8 +1,11 @@
 package edu.zahra.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.View;
 
@@ -37,11 +40,11 @@ public class ViewMarkerActivity extends AppCompatActivity
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
-        // [START_EXCLUDE silent]
-        // Add a marker in Sydney, Australia,
-        // and move the map's camera to the same location.
-        // [END_EXCLUDE]
-       // LatLng sydney = new LatLng(54.279311, -8.460631);
+
+        if(ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+            map.setMyLocationEnabled(true);
+        }
+
         LatLng marker = new LatLng(latitude, longitude);
         googleMap.addMarker(new MarkerOptions()
                 .position(marker)

@@ -21,6 +21,7 @@ import com.firebase.ui.database.FirebaseListOptions;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationListener;
+import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -44,21 +45,15 @@ public class TestmapActivity extends FragmentActivity implements
          {
 
     GoogleMap map;
-
-             LatLng sydney = new LatLng(-34, 151);
-             LatLng TamWorth = new LatLng(-31.083332, 150.916672);
-             LatLng NewCastle = new LatLng(-32.916668, 151.750000);
-             LatLng Brisbane = new LatLng(-27.470125, 153.021072);
+    GoogleApiClient googleApiClient;
 
              // creating array list for adding all our locations.
              private ArrayList<LatLng> locationArrayList;
-             //private ArrayList<LatLng> locationArrayListt;
+             ArrayList<String> arrayLat;
+             ArrayList<String> arrayLon;
 
-             ArrayList<String> test;
-             ArrayList<String> test2;
-
-             double[] doubleArray;
-             double[] failsArray;
+             double[] longitudeArray;
+             double[] latitudeArray;
 
              @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,38 +65,24 @@ public class TestmapActivity extends FragmentActivity implements
         mapFragment.getMapAsync(this);
 
         Intent intent=getIntent();
-     test = (intent.getStringArrayListExtra("arrayLat"));
-     test2 = (intent.getStringArrayListExtra("arrayLon"));
+                 arrayLat = (intent.getStringArrayListExtra("arrayLat"));
+                 arrayLon = (intent.getStringArrayListExtra("arrayLon"));
 
      //   latitude = Double.parseDouble(getIntent().getStringExtra("Latitude"));
      //   longitude = Double.parseDouble(getIntent().getStringExtra("Longitude"));
 
                 // List<String> failList = new ArrayList<>();
 
+                 latitudeArray = new double[arrayLat.size()]; //create an array with the size of the failList
+                 longitudeArray = new double[arrayLon.size()];
 
-                  failsArray = new double[test.size()]; //create an array with the size of the failList
-
-                 doubleArray = new double[test2.size()];
-                 for (int i = 0; i < test.size(); ++i) { //iterate over the elements of the list
-                     failsArray[i] = Double.parseDouble(test.get(i)); //store each element as a double in the array
-                     doubleArray[i] = Double.parseDouble(test2.get(i));
+                 for (int i = 0; i < arrayLat.size(); ++i) { //iterate over the elements of the list
+                     latitudeArray[i] = Double.parseDouble(arrayLat.get(i)); //store each element as a double in the array
+                     longitudeArray[i] = Double.parseDouble(arrayLon.get(i));
                  }
-
 
        // String[] stringArray = {"1.3", "4.6", "3.2"};
        // double[] doubleArray = ArrayList.stream(test).mapToDouble(Double::parseDouble).toArray();
-
-
-
-        // in below line we are initializing our array list.
-        locationArrayList = new ArrayList<>();
-
-        // on below line we are adding our
-        // locations in our array list.
-        locationArrayList.add(sydney);
-        locationArrayList.add(TamWorth);
-        locationArrayList.add(NewCastle);
-        locationArrayList.add(Brisbane);
 
     }
 
@@ -110,14 +91,19 @@ public class TestmapActivity extends FragmentActivity implements
 
         map = googleMap;
 
-        for (int i = 0; i < failsArray.length; i++) {
+        //set current location
+        if(ContextCompat.checkSelfPermission(this,Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+            map.setMyLocationEnabled(true);
+        }
+
+        for (int i = 0; i < latitudeArray.length; i++) {
 
            // ArrayList<LatLng> locationArrayList;
 
            // locationArrayList.add(failsArray[i])
 
             // LatLng sydney = new LatLng(54.279311, -8.460631);
-            LatLng marker = new LatLng(failsArray[i], doubleArray[i]);
+            LatLng marker = new LatLng(latitudeArray[i], longitudeArray[i]);
             googleMap.addMarker(new MarkerOptions()
                     .position(marker)
                     .title("name"));
@@ -136,4 +122,5 @@ public class TestmapActivity extends FragmentActivity implements
           //  map.moveCamera(CameraUpdateFactory.newLatLng(locationArrayList.get(i)));
         }
     }
+
 }

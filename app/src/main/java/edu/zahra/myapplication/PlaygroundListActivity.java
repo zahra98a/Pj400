@@ -136,14 +136,16 @@ public class PlaygroundListActivity extends AppCompatActivity {
     }
 // go to map activity
     public void doShowMap(View view) {
-        Intent intent = new Intent(PlaygroundListActivity.this, TestmapActivity.class);
+        Intent intent = new Intent(PlaygroundListActivity.this, GoogleMapActivity.class);
        // intent.putExtra("Key",""+ array);
 
+        //pass the array list of location
         intent.putStringArrayListExtra("arrayLat", (ArrayList<String>) arrayLat);
         intent.putStringArrayListExtra("arrayLon", (ArrayList<String>) arrayLon);
         startActivity(intent); // start the next activityBundle
 
     }
+    //logout
     public void doLogout(View view) {
         Intent intent = new Intent(this, ChooseUserActivity.class);
         // intent.putExtra("UID",""+ mUser);

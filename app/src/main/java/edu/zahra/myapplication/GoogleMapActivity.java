@@ -9,6 +9,7 @@ import androidx.fragment.app.FragmentActivity;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
@@ -45,6 +46,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import java.io.FileDescriptor;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -67,6 +69,14 @@ public class GoogleMapActivity extends FragmentActivity implements
     private int ProximityRadius = 10000;
 
 
+    // creating array list for adding all our locations.
+    private ArrayList<LatLng> locationArrayList;
+    ArrayList<String> arrayLat;
+    ArrayList<String> arrayLon;
+
+    double[] longitudeArray;
+    double[] latitudeArray;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -82,6 +92,20 @@ public class GoogleMapActivity extends FragmentActivity implements
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+
+        Intent intent=getIntent();
+        arrayLat = (intent.getStringArrayListExtra("arrayLat"));
+        arrayLon = (intent.getStringArrayListExtra("arrayLon"));
+
+        latitudeArray = new double[arrayLat.size()]; //create an array with the size of the failList
+        longitudeArray = new double[arrayLon.size()];
+
+        for (int i = 0; i < arrayLat.size(); ++i) { //iterate over the elements of the list
+            latitudeArray[i] = Double.parseDouble(arrayLat.get(i)); //store each element as a double in the array
+            longitudeArray[i] = Double.parseDouble(arrayLon.get(i));
+        }
+
+
     }
     public void doSearch(View view) {
         address = addressField.getText().toString();
@@ -124,7 +148,7 @@ public class GoogleMapActivity extends FragmentActivity implements
     }
 
     public void doNearbyPlaces(View view) {
-        String playground = "playground"; // the places to search
+       /* String playground = "playground"; // the places to search
         Object transferData[] = new Object[2];
         GetNearbyPlaces getNearbyPlaces = new GetNearbyPlaces();
 
@@ -135,7 +159,16 @@ public class GoogleMapActivity extends FragmentActivity implements
 
         getNearbyPlaces.execute(transferData);
         Toast.makeText(this, "Searching for Nearby Playgrounds...", Toast.LENGTH_SHORT).show();
-        Toast.makeText(this, "Showing Nearby Playgrounds...", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Showing Nearby Playgrounds...", Toast.LENGTH_SHORT).show();*/
+
+
+
+
+
+
+
+
+
 
     }
     private String getUrl(double latitide, double longitude, String nearbyPlace)
@@ -169,6 +202,32 @@ public class GoogleMapActivity extends FragmentActivity implements
 
             map.setMyLocationEnabled(true);
 
+        }
+
+        for (int i = 0; i < latitudeArray.length; i++) {
+
+            // ArrayList<LatLng> locationArrayList;
+
+            // locationArrayList.add(failsArray[i])
+
+            // LatLng sydney = new LatLng(54.279311, -8.460631);
+            LatLng marker = new LatLng(latitudeArray[i], longitudeArray[i]);
+            googleMap.addMarker(new MarkerOptions()
+                    .position(marker)
+                    .title("name"));
+
+            // [START_EXCLUDE silent]
+            // googleMap.moveCamera(CameraUpdateFactory.newLatLng(marker));
+
+
+            // below line is use to add marker to each location of our array list.
+            // map.addMarker(new MarkerOptions().position(locationArrayList.get(i)).title("Marker"));
+
+            // below lin is use to zoom our camera on map.
+            // map.animateCamera(CameraUpdateFactory.zoomTo(18.0f));
+
+            // below line is use to move our camera to the specific location.
+            //  map.moveCamera(CameraUpdateFactory.newLatLng(locationArrayList.get(i)));
         }
     }
     public boolean checkLocationPermission(){
